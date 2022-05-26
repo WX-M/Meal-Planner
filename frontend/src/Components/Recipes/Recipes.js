@@ -2,6 +2,7 @@ import { render } from "@testing-library/react";
 import React from "react";
 import { connect } from "react-redux";
 import { renderRecipes } from "../../actions";
+import { renderIngredients } from "../../actions";
 
 
 
@@ -13,6 +14,8 @@ class Recipes extends React.Component {
     componentDidMount (){
         this.props.renderRecipes();
       
+
+      
     }
 
   renderList(){
@@ -21,7 +24,7 @@ class Recipes extends React.Component {
         return (
             <div className="item" key={recipe.recipeId}> 
             <div className="right floated content">
-            <button className="ui button primary">Select</button>
+            <button onClick={() => this.props.renderIngredients(recipe.recipeId)} className="ui button primary">Ingredients</button>
             </div>
             <div className="content">{recipe.recipeName}</div>
             </div>
@@ -54,4 +57,8 @@ const mapStateToProps = (state) =>{
 
 export default connect(mapStateToProps, {
     renderRecipes: renderRecipes,
+    renderIngredients: renderIngredients,
+    
+
+    
 })(Recipes);

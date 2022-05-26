@@ -3,6 +3,7 @@ import thunk from 'redux-thunk'
 import {Token} from './token'
 import {User} from './user'
 import {Recipes} from './recipes'
+import {Ingredients} from './ingredients'
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -21,6 +22,7 @@ export const ConfigureStore = () => {
             token: Token,
             user: User,
             recipes: Recipes,
+            ingredients: Ingredients
         }),
         composeEnhancers(applyMiddleware(thunk)) 
     );
