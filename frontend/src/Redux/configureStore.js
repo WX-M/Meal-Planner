@@ -1,9 +1,9 @@
-import { createStore, combineReducers, applyMiddleware, compose } from 'redux'
-import thunk from 'redux-thunk'
-import {Token} from './token'
-import {User} from './user'
-import {Recipes} from './recipes'
-import {Ingredients} from './ingredients'
+import { createStore, combineReducers, applyMiddleware, compose } from "redux";
+import thunk from "redux-thunk";
+import { Token } from "./token";
+import { User } from "./user";
+import { Recipes } from "./recipes";
+import { Ingredients } from "./ingredients";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -17,15 +17,15 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 // IS MY IS. NEVER STOP LEARNING. -- Yosri weld sara. hhhh
 
 export const ConfigureStore = () => {
-    const store = createStore(
-        combineReducers({
-            token: Token,
-            user: User,
-            recipes: Recipes,
-            ingredients: Ingredients
-        }),
-        composeEnhancers(applyMiddleware(thunk)) 
-    );
+  const store = createStore(
+    combineReducers({
+      token: Token,
+      user: User,
+      recipes: Recipes, // recipes = [{}, {}, {}, {id: 234, name: 'IIII',}]
+      ingredients: Ingredients,
+    }),
+    composeEnhancers(applyMiddleware(thunk))
+  );
 
-    return store;
-}
+  return store;
+};
