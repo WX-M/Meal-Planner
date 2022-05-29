@@ -15,8 +15,8 @@ class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: "Bob",
-      password: "bob",
+      username: "",
+      password: "",
     };
     this.handleInputChange = this.handleInputChange.bind(this);
   }
@@ -42,7 +42,7 @@ class Login extends Component {
 
   render() {
     return (
-      <div>
+      <div className="form">
         <h1>Please Sign In</h1>
         <label className="sr-only">Username</label>
         <input
@@ -66,10 +66,12 @@ class Login extends Component {
           onChange={this.handleInputChange}
           required
         />
-        <Link to="/register">Need an account?</Link>
-        <button type="submit" onClick={this.handleLogin}>
+
+        <button className="btn" type="submit" onClick={this.handleLogin}>
           Sign in
         </button>
+        <br />
+        <Link to="/register">Need an account?</Link>
       </div>
     );
   }

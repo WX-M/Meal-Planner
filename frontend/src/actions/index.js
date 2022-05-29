@@ -18,8 +18,6 @@ export const renderRecipes = () => async (dispatch, getState) => {
 export const renderIngredients = (id) => async (dispatch, getState) => {
   const state = getState(); // { token = { token: 'alsdkjfalksjdfl' }, user, recepies } state of the store
 
-  console.log(state.user.id);
-
   const response = await jsonRecipe.get(`/ingredient/${id}`, {
     headers: {
       Authorization: `Bearer ${state.token.token}`,

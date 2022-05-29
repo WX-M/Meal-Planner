@@ -25,10 +25,14 @@ class Recipes extends React.Component {
         <div className="item" key={recipe.recipeId}>
           <div className="right floated content">
             <button
-              onClick={() => this.props.renderIngredients(recipe.recipeId)}
+              onClick={() => {
+                this.props.renderIngredients(recipe.recipeId);
+                this.props.setSelectedRecipeId(recipe.recipeId);
+              }}
               className="ui button primary"
             >
-              Ingredients
+              {" "}
+              Ingredients{" "}
             </button>
           </div>
           <div className="content">{recipe.recipeName}</div>
@@ -45,27 +49,31 @@ class Recipes extends React.Component {
     return (
       <div>
         <div className="ui divided list">{this.renderList()}</div>
-        <label className="sr-only">Recipe name</label>
-        <input
-          type="text"
-          id="recipeName"
-          name="recipeName"
-          className="form-control"
-          placeholder="Recipe name"
-          v-model="recipeName"
-          onChange={this.handleInputChange}
-          required
-        />
-        <button className="ui button primary" onClick={this.handleSubmit}>
-          Add Recipe
-        </button>
+        <div className="item">
+          <label className="sr-only">Recipe name</label>
+          <input
+            type="text"
+            id="recipeName"
+            name="recipeName"
+            className="form-control"
+            placeholder="Recipe name"
+            v-model="recipeName"
+            onChange={this.handleInputChange}
+            required
+          />
+          <div className="right floated content">
+            <button className="ui button primary" onClick={this.handleSubmit}>
+              Add Recipe
+            </button>
+          </div>
+        </div>
       </div>
     );
   }
 }
 
 const mapStateToProps = (state) => {
-  console.log(state.user.id);
+  // console.log(state.user.id);
   // you will find userId in this.props.userId inside the component.
 
   return { recipes: state.recipes, userId: state.user.id };
