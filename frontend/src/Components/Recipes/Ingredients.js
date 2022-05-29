@@ -51,7 +51,6 @@ const Ingredients = ({ ingredients, selectedRecipeId }) => {
 };
 
 const mapStateToProps = (state) => {
-  console.log(state);
   return { ingredients: state.ingredients };
 };
 
